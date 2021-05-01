@@ -5,18 +5,6 @@ const { ADMIN_ROLE, CUSTOMER_ROLE } = require('../commons/util');
 const Schema = mongoose.Schema;
 
 const schema = new Schema({
-    username: {
-        type: String,
-        required: true,
-        unique: true,
-        minLength: 4
-    },
-
-    password: {
-        type: String,
-        required: true,
-    },
-
     firstName: {
         type: String,
         required: true,
@@ -28,8 +16,17 @@ const schema = new Schema({
         required: true,
         trim: true
     },
+    email: {
+        type: String,
+        trim: true,
+        required: true
+    },
 
-    role: {
+    password: {
+        type: String,
+        required: true,
+    }
+    /*role: {
         type: String,
         enum: [ADMIN_ROLE, CUSTOMER_ROLE],
         default: CUSTOMER_ROLE
@@ -44,7 +41,7 @@ const schema = new Schema({
     isLocked: {
         type: Boolean,
         default: false
-    }
+    }*/
 
 }, { collection: 'users' });
 
