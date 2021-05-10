@@ -5,6 +5,7 @@ const asyncHandler = require('express-async-handler');
 
 router.post('/login', asyncHandler(async (req, res) => {
     const { username, password } = req.body;
+    console.log()
     const token = await auth.login(username, password);
     res.json({ token });
 }))

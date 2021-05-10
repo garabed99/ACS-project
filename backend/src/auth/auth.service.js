@@ -6,14 +6,14 @@ const jwt = require('jsonwebtoken');
 
 class AuthService {
     async validate(username, password) {
-        const user = await User.findOne({ username});
-        /*if(user && user.isLocked) {     //checks if there's user AND isLocked
+        const user = await User.findOne({ username });
+        if(user && user.isLocked) {     //checks if there's user AND isLocked
             throw new Error('The user is locked!');
-        }*/
+        }
         
         if (!user || !bcrypt.compareSync(password, user.password)) {    //checks if there's NO user OR wrong pw
             
-            /*if(user) {                                                  //however if there's user
+            if(user) {                                                  //however if there's user
                 const attemptCount = user.loginAttempts +1; 
                 user.loginAttempts = attemptCount;
 
@@ -26,19 +26,18 @@ class AuthService {
                 if(user.isLocked) {
                     throw new Error('The user is locked!');     //and throw Error message
                 }
-            }*/
+            }
 
             throw new Unauthorized();
         }
 
-       /* if (user.loginAttempts < 3) {
+        if (user.loginAttempts < 3) {
             user.loginAttempts = 0;
             await user.save();
-        }*/
+        }
         
         return user;
-        }
-    
+    }
 
 
     async login(username, password) {

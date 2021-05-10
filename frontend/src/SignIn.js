@@ -7,25 +7,13 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
+// import Box from '@material-ui/core/Box';
 import LockOutlinedIcon from '@material-ui/icons/LockOutline';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import axios from 'axios';
-// something.
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
+
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -50,6 +38,7 @@ const useStyles = makeStyles((theme) => ({
 export default function SignIn() {
   const classes = useStyles();
 
+  const [userName,setUserName] = useState("");
   const [email,setEmail] = useState("");
   const [_password,setPassword] = useState("");
 
@@ -57,14 +46,16 @@ export default function SignIn() {
     e.preventDefault();
 
     const data = {
+        username:userName,
         email:email,
         password:_password
     }
 
     axios.post("http://localhost:3030/auth/login",data)
         .then(function (response) {
+          alert(`Welcome ${email}`);
+          window.location.href = "/minesweeper";
     })
-    console.log("mdar blig");
 }
   return (
     <Container component="main" maxWidth="xs">
@@ -83,11 +74,12 @@ export default function SignIn() {
             required
             fullWidth
             id="email"
-            label="Email Address"
-            name="email"
+            label="Email Address or Username"
+            name="email or userName"
             autoComplete="email"
             autoFocus
             onChange={(e) => setEmail(e.target.value)}
+            //onChange={(e) => setUserName(e.target.value)}
           />
           <TextField
             variant="outlined"
@@ -111,27 +103,24 @@ export default function SignIn() {
             variant="contained"
             color="primary"
             className={classes.submit}
-            onClick = {handleClick}
+            onClick={handleClick}
           >
             Sign In
           </Button>
           <Grid container>
             <Grid item xs>
-              <Link href="#" variant="body2">
+              <Link href="/forgotPass" variant="body2">
                 Forgot password?
               </Link>
             </Grid>
             <Grid item>
-              <Link href="/" variant="body2">
-                {"Don't have an account? Sign Up"}
+              <Link href="/SignUp" variant="body2">
+                Don't have an account? Sign Up
               </Link>
             </Grid>
           </Grid>
         </form>
       </div>
-      <Box mt={8}>
-        <Copyright />
-      </Box>
     </Container>
   );
 }

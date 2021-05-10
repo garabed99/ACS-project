@@ -17,12 +17,12 @@ app.use(cors());
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
 
-// app.use(jwtMiddleware.unless({
-//     path: [
-//         '/auth/login',
-//         { url: '/users', methods: ['POST'] }
-//     ]
-// }));
+app.use(jwtMiddleware.unless({
+    path: [
+        '/auth/login',
+        { url: '/users', methods: ['POST'] }
+    ]
+}));
 
 app.use('/admin', admin);
 app.use('/users', users);

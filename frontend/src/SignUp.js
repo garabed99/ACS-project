@@ -3,28 +3,16 @@ import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
+// import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
+// import Box from '@material-ui/core/Box';
 import LockOutlinedIcon from '@material-ui/icons/LockOutline';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import axios  from "axios";
-function Copyright() {
-    return (
-        <Typography variant="body2" color="textSecondary" align="center">
-            {'Copyright © '}
-            <Link color="inherit" href="https://material-ui.com/">
-                Your Website
-            </Link>{' '}
-            {new Date().getFullYear()}
-            {'.'}
-        </Typography>
-    );
-}
+
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -46,8 +34,11 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+
 export default function SignUp() {
     const classes = useStyles();
+
+    const [uName, setUserName] = useState("");
     const [fName, setFirstName] = useState("");
     const [lName, setLastName] = useState("");
     const [email, setEmail] = useState("");
@@ -57,6 +48,7 @@ export default function SignUp() {
         e.preventDefault();
 
         const data = {
+            username: uName,
             firstName:fName,
             lastName:lName,
             email:email,
@@ -65,7 +57,9 @@ export default function SignUp() {
 
         axios.post("http://localhost:3030/users",data)
             .then(function (response) {
-        })
+                alert('successfully created!');
+                window.location.href = "/";
+        });
     }
 
     return (
@@ -80,6 +74,19 @@ export default function SignUp() {
                 </Typography>
                 <form className={classes.form} noValidate>
                     <Grid container spacing={2}>
+                    <Grid item xs={12}>
+                            <TextField
+                                variant="outlined"
+                                required
+                                fullWidth
+                                autoFocus
+                                id="userName"
+                                label="Username"
+                                name="userName"
+                                autoComplete="userName"
+                                onChange={(e) => setUserName(e.target.value)}
+                            />
+                        </Grid>
                         <Grid item xs={12} sm={6}>
                             <TextField
                                 autoComplete="fname"
@@ -89,7 +96,6 @@ export default function SignUp() {
                                 fullWidth
                                 id="firstName"
                                 label="First Name"
-                                autoFocus
                                 onChange={(e) => setFirstName(e.target.value)}
                             />
                         </Grid>
@@ -138,22 +144,19 @@ export default function SignUp() {
                         variant="contained"
                         color="primary"
                         className={classes.submit}
-                        onClick={handleClick}
-                    >
+                        onClick={handleClick}>
                         Sign Up
                     </Button>
                     <Grid container justify="flex-end">
                         <Grid item>
-                            <Link href="/SignIn" variant="body2">
+                            <Link href="/" variant="body2">
                                 Already have an account? Sign in
                             </Link>
                         </Grid>
                     </Grid>
                 </form>
             </div>
-            <Box mt={5}>
-                <Copyright />
-            </Box>
+
         </Container>
     );
-}
+};
