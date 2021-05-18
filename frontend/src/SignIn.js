@@ -41,7 +41,7 @@ export default function SignIn() {
   const [userName,setUserName] = useState("");
   const [email,setEmail] = useState("");
   const [_password,setPassword] = useState("");
-
+  
   function handleClick(e){
     e.preventDefault();
 
@@ -53,8 +53,16 @@ export default function SignIn() {
 
     axios.post("http://localhost:3030/auth/login",data)
         .then(function (response) {
-          alert(`Welcome ${email}`);
-          window.location.href = "/minesweeper";
+          console.log(response)
+          const name = response.data;
+          console.log(data);
+          alert(`Welcome ${name.userinfo.firstname}`);
+          //localStorage
+          localStorage.setItem('fname', JSON.stringify(name.userinfo.firstname))
+          window.location.href = "/Homepage";
+    }).catch((error)=>{
+      alert('wrong details');
+      //console.log(error.message);
     })
 }
   return (
@@ -75,10 +83,10 @@ export default function SignIn() {
             fullWidth
             id="email"
             label="Email Address or Username"
-            name="email or userName"
+            name="username_email"
             autoComplete="email"
             autoFocus
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => setUserName(e.target.value)}
             //onChange={(e) => setUserName(e.target.value)}
           />
           <TextField

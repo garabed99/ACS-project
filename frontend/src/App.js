@@ -3,8 +3,8 @@ import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 //import UsersTable from './UsersTable';
 import SignUp from './SignUp';
 import SignIn from './SignIn';
-import Homepage from './homepage'
-import Minesweeper from './minesweeper';
+import Homepage from './Homepage'
+import Minesweeper from './Minesweeper';
 
 function App() {
   return (
@@ -18,14 +18,18 @@ function App() {
               <SignUp />
             </Route>
 
-            <Route path= "/homepage">
+            {/* <Route path= "/homepage">
               <Homepage />
-            </Route>
+            </Route> */}
+            <Route
+                    path="/Homepage"
+                    component={Homepage}
+                  />
 
-            <Route path= "/Minesweeper">
-              <Minesweeper />
-            </Route>
-
+            <Route
+                    path="/Minesweeper/:difficulty"
+                    component={Minesweeper}
+                  />           
           </Switch>
         </Router>
   );

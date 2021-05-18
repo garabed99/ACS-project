@@ -7,7 +7,7 @@ const { ADMIN_ROLE } = require('../commons/util');
 router.patch('/unlock-user/:id',asyncHandler(async (req, res) =>{
     const {id} = req.params;
     if(req.user.role !== ADMIN_ROLE) {
-        throw new Error('Not authorized!')
+        throw new Error('forbidden!')
     }
 
     await admin.unlock(id);
@@ -18,7 +18,7 @@ router.patch('/unlock-user/:id',asyncHandler(async (req, res) =>{
 router.patch('/lock-user/:id', asyncHandler(async (req, res) => {
     const {id} = req.params;
     if(req.user.role !== ADMIN_ROLE) {
-        throw new Error('Not authorized!')
+        throw new Error('forbidden')
     }
     
     await admin.lock(id);

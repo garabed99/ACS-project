@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const { ADMIN_ROLE, CUSTOMER_ROLE } = require('../commons/util');
+const Score = require('../gameData/score.entity')
 
 const Schema = mongoose.Schema;
 
@@ -36,8 +37,8 @@ const userSchema = new Schema({
         required: true,
     },
 
-    // score: [ {type: Schema.Types.ObjectId,
-    //     ref: 'scoreSchema'} ]
+    score: [ {type: Schema.Types.ObjectId,
+        ref: 'gameSchema'} ],
 
     role: {
         type: String,
@@ -58,23 +59,7 @@ const userSchema = new Schema({
 
 }, { collection: 'users' });
 
-// const scoreSchema = new Schema({
-//     user: {
-//         type: Schema.Types.ObjectId,
-//         ref: 'User'
-//     },
 
-//     gameDifficulty: {
-//         type: String
-//     },
-
-//     score:{ 
-//         type: Number
-//     },
-//     time: {
-//         type: Number
-//     }
-// }, {collection: 'scores'})
 
 userSchema.pre('save', function (next) {
     if (this.isModified('password')) {
@@ -86,4 +71,3 @@ userSchema.pre('save', function (next) {
 })
 
 module.exports = mongoose.model('User', userSchema);
-// const scores = mongoose.model('Score', scoreSchema)
