@@ -57,7 +57,7 @@ export default function SignUp() {
 
         axios.post("http://localhost:3030/users",data)
             .then(function (response) {
-                alert('successfully created!');
+                alert('Successfully created account!');
                 window.location.href = "/";
         });
     }
@@ -144,7 +144,8 @@ export default function SignUp() {
                         variant="contained"
                         color="primary"
                         className={classes.submit}
-                        onClick={handleClick}>
+                        onClick={handleClick}
+                        >
                         Sign Up
                     </Button>
                     <Grid container justify="flex-end">

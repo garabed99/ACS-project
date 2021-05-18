@@ -13,10 +13,11 @@
 // import Container from '@material-ui/core/Container';
 // import axios  from "axios";
 
-export default function minesweeper() {
+export default function minesweeper(props) {
+    console.log(props.match)
     return(
 
-        <div> game page</div>
+        <div> easy game page</div>
         
         )
 }
