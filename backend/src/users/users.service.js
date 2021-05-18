@@ -1,6 +1,5 @@
 const { NotFound } = require('http-errors');
 const User = require('./user.entity');
-
 const mongoose = require('mongoose');
 
 class UserService {
@@ -38,7 +37,7 @@ class UserService {
         session.startTransaction();
 
         try {
-            const user = await this.findOne(id);;
+            const user = await this.findOne(id);
             const removedUser = await user.remove({
                 session
             });

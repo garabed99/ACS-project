@@ -1,24 +1,38 @@
 import './App.css';
+import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 //import UsersTable from './UsersTable';
 import SignUp from './SignUp';
-import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import SignIn from './SignIn';
+import Homepage from './Homepage'
+import Minesweeper from './Minesweeper';
+
 function App() {
   return (
     <Router>
-      <Switch>
-      <Route exact path= "/">
-        <SignUp/>
-        </Route>
+          <Switch>
+          <Route exact path= "/">
+              <SignIn />
+            </Route>
 
-        <Route path= "/SignIn">
-          <SignIn />
-        </Route>
-        
-      </Switch>
-    </Router> 
+            <Route path= "/SignUp">
+              <SignUp />
+            </Route>
+
+            {/* <Route path= "/homepage">
+              <Homepage />
+            </Route> */}
+            <Route
+                    path="/Homepage"
+                    component={Homepage}
+                  />
+
+            <Route
+                    path="/Minesweeper/:difficulty"
+                    component={Minesweeper}
+                  />           
+          </Switch>
+        </Router>
   );
 }
-
 
 export default App;

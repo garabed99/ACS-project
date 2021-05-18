@@ -10,11 +10,14 @@ module.exports = {
         else if (err.message.includes('locked!')) {
             err.statusCode = 423;
         }
-        else if (err.message.includes('Not authorized')) {
+        else if (err.message.includes('forbidden')) {
             err.statusCode = 403;
         }
         else if (err.message.includes('not found')) {
             err.statusCode = 404;
+        }
+        else if (err.message.includes('unauthorized')) {
+            err.statusCode = 401;
         }
 
         if (!err.statusCode) {

@@ -1,6 +1,9 @@
 const fs = require('fs');
 const ADMIN_ROLE = "admin";
 const CUSTOMER_ROLE = "customer";
+const EASY_MODE = "easy";
+const MEDIUM_MODE = "medium";
+const HARD_MODE = "hard";
 
 module.exports = {
     writeInFile(content) {
@@ -23,5 +26,8 @@ module.exports = {
         });
     },
     ADMIN_ROLE, 
-    CUSTOMER_ROLE
+    CUSTOMER_ROLE,
+    EASY_MODE,
+    MEDIUM_MODE,
+    HARD_MODE
 }
