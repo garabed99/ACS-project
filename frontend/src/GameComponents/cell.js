@@ -4,7 +4,7 @@ import axios from 'axios';
 import './style.css'
 export default function Cell(props){
   
-  
+
 function cellBox(input){
 
     if(input.isMine){
@@ -16,6 +16,7 @@ function cellBox(input){
      return input.neighbour
 
 }
+
 
 let className = props.input.isRevealed ? "square" : "hidden"
 
