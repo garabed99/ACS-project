@@ -1,0 +1,52 @@
+.body {
+  margin: 20px;
+  padding: 0;
+  font-family: sans-serif;
+  background: #e6d5d2;
+}
+
+.board {
+  width: 400px;
+  height: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #c6d895;
+  margin-top: 20px;
+}
+.container {
+  margin-bottom: 1px;
+  padding: 2px;
+  text-align: center;
+  color: rgb(2, 2, 2);
+  min-height: 15px;
+}
+.timer {
+  margin-bottom: 1px;
+  padding: 2px;
+  text-align: center;
+  color: rgb(2, 2, 2);
+  min-height: 40px;
+}
+.square {
+  background: #d32a2a;
+  border: 2px solid #fff;
+  float: left;
+  line-height: 20px;
+  height: 40px;
+  text-align: center;
+  width: 40px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.hidden {
+  background: #b8afb0;
+  border: 2px solid #fff;
+  float: left;
+  line-height: 20px;
+  height: 25px;
+  text-align: center;
+  width: 25px;
+  border-radius: 4px;
+  margin: 0.5px;
+}
