@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import SignUp from './SignUp';
 import SignIn from './SignIn';
 import Homepage from './Homepage'
-import Minesweeper from './Minesweeper';
+import Minesweeper from '../src/GameComponents/Minesweeper';
 
 function App() {
   return (

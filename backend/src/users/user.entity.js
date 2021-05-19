@@ -37,6 +37,15 @@ const userSchema = new Schema({
         required: true,
     },
 
+    gamesPlayed: {
+        type: Number,
+        default: 0
+    },
+    gamesWon: {
+        type: Number,
+        default: 0    
+    },
+    
     score: [ {type: Schema.Types.ObjectId,
         ref: 'gameSchema'} ],
 

@@ -18,14 +18,14 @@ import axios from 'axios';
 
 const useStyles = makeStyles((theme) => ({
     paper: {
-        marginTop: theme.spacing(8),
+        marginTop: theme.spacing(20),
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center'
     },
 
     avatar: {
-        marginTop: theme.spacing(5),
+        marginTop: theme.spacing(7),
         backgroundColor: theme.palette.primary.main,
         variant: 'rounded'
     },
@@ -91,7 +91,7 @@ export default function Homepage(props) {
                         style={{ margin:"auto" }} 
                         
                     >
-                    Total win/played: win/played
+                    Total win/played: {"2/31"}
                     </Typography>
 
                     <Typography variant="h6"
@@ -99,7 +99,9 @@ export default function Homepage(props) {
                         position= "left" 
                         
                     >
-                    Best time per game
+                    Best time/difficulty:<br></br> easy - 1:34 
+                    <br></br> medium - 4:32
+                    <br></br> hard - 8:48
                     </Typography>
 
                     <Button  color="inherit" 

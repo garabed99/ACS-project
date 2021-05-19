@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
 export default function SignIn() {
   const classes = useStyles();
 
-  const [userName,setUserName] = useState("");
+  const [userName_email,setUserName] = useState("");
   const [email,setEmail] = useState("");
   const [_password,setPassword] = useState("");
   
@@ -46,7 +46,7 @@ export default function SignIn() {
     e.preventDefault();
 
     const data = {
-        username:userName,
+        username:userName_email,
         email:email,
         password:_password
     }
@@ -56,7 +56,6 @@ export default function SignIn() {
           console.log(response)
           const name = response.data;
           console.log(data);
-          alert(`Welcome ${name.userinfo.firstname}`);
           //localStorage
           localStorage.setItem('fname', JSON.stringify(name.userinfo.firstname))
           window.location.href = "/Homepage";
@@ -81,10 +80,10 @@ export default function SignIn() {
             margin="normal"
             required
             fullWidth
-            id="email"
+            id="username_email"
             label="Email Address or Username"
             name="username_email"
-            autoComplete="email"
+            autoComplete="username_email"
             autoFocus
             onChange={(e) => setUserName(e.target.value)}
             //onChange={(e) => setUserName(e.target.value)}
