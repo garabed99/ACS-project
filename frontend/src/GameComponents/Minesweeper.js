@@ -3,6 +3,7 @@ import React, {useState} from 'react';
 import Board from './board'
 import "./style.css"
 
+
 export default function Minesweeper(){
  
 const [h,setHeight] = useState(9);

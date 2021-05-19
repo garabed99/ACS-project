@@ -4,6 +4,7 @@ import axios from 'axios';
 import './style.css'
 export default function Cell(props){
   
+  
 function cellBox(input){
 
     if(input.isMine){

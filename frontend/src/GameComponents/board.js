@@ -117,6 +117,7 @@ function renderBoard(board){
     
   }
 
+  
   function handleOnClick(x,y){
     if(board[x][y].isRevealed || board[x][y].isFlagged){
       return null;
